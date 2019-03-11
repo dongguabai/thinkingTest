@@ -1,1 +1,1 @@
-some thinking and testing
+Some thoughts and tests.
