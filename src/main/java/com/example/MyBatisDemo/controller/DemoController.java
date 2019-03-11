@@ -20,4 +20,10 @@ public class DemoController {
     public Object test(Integer id){
         return userService.getUserById(id);
     }
+
+    @RequestMapping("/test1Cache")
+    public Object test1Cache(Integer id){
+        userService.test1Cache(id);
+        return "OK";
+    }
 }
