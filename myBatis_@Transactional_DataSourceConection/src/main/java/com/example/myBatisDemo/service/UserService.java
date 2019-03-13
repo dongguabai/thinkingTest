@@ -1,7 +1,7 @@
-package com.example.MyBatisDemo.service;
+package com.example.myBatisDemo.service;
 
-import com.example.MyBatisDemo.dao.UserMapper;
-import com.example.MyBatisDemo.entity.User;
+import com.example.myBatisDemo.dao.UserMapper;
+import com.example.myBatisDemo.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

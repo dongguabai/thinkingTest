@@ -1,4 +1,4 @@
-package com.example.MyBatisDemo.entity;
+package com.example.myBatisDemo.entity;
 
 /**
  * @author dongguabai

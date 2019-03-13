@@ -1,6 +1,6 @@
-package com.example.MyBatisDemo.controller;
+package com.example.myBatisDemo.controller;
 
-import com.example.MyBatisDemo.service.UserService;
+import com.example.myBatisDemo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

@@ -1,6 +1,6 @@
-package com.example.MyBatisDemo.dao;
+package com.example.myBatisDemo.dao;
 
-import com.example.MyBatisDemo.entity.User;
+import com.example.myBatisDemo.entity.User;
 
 /**
  * @author dongguabai
