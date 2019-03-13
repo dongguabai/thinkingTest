@@ -1,3 +1,3 @@
-* MyBatis & @ Transactional & DataSource Connection
+* `JdbcTemplate` Demo
 * link：https://blog.csdn.net/Dongguabai/article/details/88525504
 
