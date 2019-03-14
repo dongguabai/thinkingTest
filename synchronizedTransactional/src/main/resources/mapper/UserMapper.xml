@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.synchronizedTransactional.dao.UserMapper" >
+
+    <update id="updateUser">
+        UPDATE user_account SET balance = balance -10
+    </update>
+
+
+    <select id="selectByPrimaryKey" resultType="com.example.synchronizedTransactional.entity.User" parameterType="integer">
+        select * from user_account where id = #{id}
+    </select>
+
+
+    <update id="updateUserZhiHu" parameterType="long">
+        UPDATE user_account SET balance = #{balance}
+    </update>
+</mapper>

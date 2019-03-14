@@ -6,6 +6,7 @@
         <module>MyBatis_@Transactional_DataSourceConection</module>
         <module>jdbcTemplateDemo</module>
         <module>guavaDemo</module>
+		<module>synchronizedTransactional</module>
     </modules>
     <parent>
 		<groupId>org.springframework.boot</groupId>
