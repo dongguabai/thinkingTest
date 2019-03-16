@@ -7,7 +7,6 @@
         <module>jdbcTemplateDemo</module>
         <module>guavaDemo</module>
 		<module>synchronizedTransactional</module>
-		<module>mybatis-source-a</module>
 	</modules>
     <parent>
 		<groupId>org.springframework.boot</groupId>
