@@ -8,6 +8,7 @@
         <module>guavaDemo</module>
 		<module>synchronizedTransactional</module>
         <module>interview</module>
+        <module>juc</module>
     </modules>
     <parent>
 		<groupId>org.springframework.boot</groupId>
