@@ -9,6 +9,7 @@
 		<module>synchronizedTransactional</module>
         <module>interview</module>
         <module>juc</module>
+        <module>testing</module>
     </modules>
     <parent>
 		<groupId>org.springframework.boot</groupId>
