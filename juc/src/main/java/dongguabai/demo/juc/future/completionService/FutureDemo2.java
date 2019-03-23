@@ -1,30 +1,25 @@
-package dongguabai.demo.juc.completionService;
+package dongguabai.demo.juc.future.completionService;
 
 import com.google.common.collect.Lists;
 import lombok.AllArgsConstructor;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.*;
 
 /**
  * @author dongguabai
- * @date 2019-03-21 17:57
+ * @date 2019-03-21 17:16
  */
-public class CompletionServiceDemo {
+public class FutureDemo2 {
 
     public static void main(String[] args) throws InterruptedException, ExecutionException {
-
         ExecutorService executorService = Executors.newCachedThreadPool();
-        ArrayList<Task> taskList = Lists.newArrayList(new Task("第一个任务", 1),
-                new Task("第二个任务", 2), new Task("第三个任务", 3));
-
-        ExecutorCompletionService completionService = new ExecutorCompletionService<String>(executorService);
-
-        taskList.forEach(completionService::submit);
-
-        Future take = completionService.take();
-        System.out.println("获取最先执行的任务的结果"+take.get());
+        System.out.println(executorService.getClass());
+        List<Future<String>> futureList = executorService.invokeAll(Lists.newArrayList(new Task("第一个任务", 1),
+                new Task("第二个任务", 2), new Task("第三个任务", 3)));
+        System.out.println(futureList.get(0).get());
     }
+
 
     @AllArgsConstructor
     private static class Task implements Callable<String> {
@@ -39,6 +34,4 @@ public class CompletionServiceDemo {
             return Thread.currentThread().getName()+"->"+name;
         }
     }
-
-
 }

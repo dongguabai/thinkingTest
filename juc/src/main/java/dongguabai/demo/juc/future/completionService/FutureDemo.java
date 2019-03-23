@@ -1,7 +1,6 @@
-package dongguabai.demo.juc.completionService;
+package dongguabai.demo.juc.future.completionService;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
