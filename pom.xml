@@ -10,6 +10,7 @@
         <module>interview</module>
         <module>juc</module>
         <module>testing</module>
+        <module>jvm</module>
     </modules>
     <parent>
 		<groupId>org.springframework.boot</groupId>
