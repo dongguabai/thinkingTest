@@ -8,12 +8,12 @@ import java.util.Date;
  * @author dongguabai
  * @date 2019-03-18 18:15
  */
-public class EventBusManager {
+public class EventBusSource {
 
     public static void main(String[] args) {
         EventBus eventBus = new EventBus();
-        eventBus.register(new Observer1());
-        eventBus.register(new Observer2());
+        eventBus.register(new Listener1());
+        eventBus.register(new Listener2());
         eventBus.post("EventBus 发送的 String 消息");
         eventBus.post(new Date());
     }

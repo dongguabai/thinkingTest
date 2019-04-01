@@ -9,7 +9,7 @@ package dongguabai.code.interview.single;
 public class Sort {
 
     public static void main(String[] args) {
-        maopao();
+        System.out.println("aaa".hashCode());
     }
 
     /**
@@ -42,12 +42,16 @@ public class Sort {
      * @return
      */
     public static int[] QuickSort(int[] array, int start, int end) {
-        if (array.length < 1 || start < 0 || end >= array.length || start > end) return null;
+        if (array.length < 1 || start < 0 || end >= array.length || start > end) {
+            return null;
+        }
         int smallIndex = partition(array, start, end);
-        if (smallIndex > start)
+        if (smallIndex > start) {
             QuickSort(array, start, smallIndex - 1);
-        if (smallIndex < end)
+        }
+        if (smallIndex < end) {
             QuickSort(array, smallIndex + 1, end);
+        }
         return array;
     }
 
@@ -63,12 +67,14 @@ public class Sort {
         int pivot = (int) (start + Math.random() * (end - start + 1));
         int smallIndex = start - 1;
         swap(array, pivot, end);
-        for (int i = start; i <= end; i++)
+        for (int i = start; i <= end; i++) {
             if (array[i] <= array[end]) {
                 smallIndex++;
-                if (i > smallIndex)
+                if (i > smallIndex) {
                     swap(array, i, smallIndex);
+                }
             }
+        }
         return smallIndex;
     }
 
@@ -83,5 +89,12 @@ public class Sort {
         int temp = array[i];
         array[i] = array[j];
         array[j] = temp;
+    }
+
+
+    public static void myShort(){
+        int[] arr = {1, 3, 2, 5, 4, 7, 6};
+        int chushizhiIndex = 0;
+        int chushizhi = arr[chushizhiIndex];
     }
 }

@@ -9,7 +9,7 @@ import java.util.concurrent.LinkedBlockingDeque;
  */
 public class Demo1 {
 
-    private static LinkedBlockingDeque<String> queue = new LinkedBlockingDeque<>();
+    private static LinkedBlockingDeque<String[]> queue = new LinkedBlockingDeque<>();
 
     static class Producer implements Runnable {
 
@@ -17,13 +17,13 @@ public class Demo1 {
         public void run() {
             while (true) {
                 try {
-                    Thread.sleep(2000);
+                    Thread.sleep(1000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                String product = "生产日期--" + LocalDateTime.now();
+                String[] product = new String[1024000];
                 queue.push(product);
-                System.out.println("已经生产了【【【" + product);
+                System.out.println(LocalDateTime.now()+"已经生产了【【【" + product);
             }
         }
     }
@@ -35,11 +35,11 @@ public class Demo1 {
         public void run() {
             while (true) {
                 try {
-                    Thread.sleep(1000);
+                    Thread.sleep(5000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                String s = null;
+                String[] s = null;
                 try {
                     s = queue.take();
                 } catch (InterruptedException e) {
