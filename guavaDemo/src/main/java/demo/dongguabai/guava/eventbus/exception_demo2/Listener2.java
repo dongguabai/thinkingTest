@@ -1,8 +1,7 @@
-package demo.dongguabai.guava.eventbus.demo1;
+package demo.dongguabai.guava.eventbus.exception_demo2;
 
 import com.google.common.eventbus.Subscribe;
 
-import java.time.LocalDateTime;
 import java.util.Date;
 
 /**
@@ -14,6 +13,6 @@ public class Listener2 {
 
     @Subscribe  //监听 参数为 Date 的消息
     public void doSth(Date info) {
-        System.out.println(LocalDateTime.now()+"Listener2 接收到了消息：" + info.toLocaleString());
+        System.out.println("Listener2 接收到了消息：" + info.toLocaleString());
     }
 }

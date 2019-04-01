@@ -1,4 +1,4 @@
-package demo.dongguabai.guava.eventbus.exception_demo;
+package demo.dongguabai.guava.eventbus.exception_demo2;
 
 import com.google.common.eventbus.Subscribe;
 
