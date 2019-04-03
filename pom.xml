@@ -11,6 +11,8 @@
         <module>juc</module>
         <module>testing</module>
         <module>jvm</module>
+        <module>javaDeep</module>
+        <module>java8</module>
     </modules>
     <parent>
 		<groupId>org.springframework.boot</groupId>
