@@ -1,1 +1,1 @@
-* Some thoughts and tests.78.idea
+* Some thoughts and tests.78.idea&&conflict
