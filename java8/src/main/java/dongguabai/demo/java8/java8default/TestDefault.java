@@ -1,4 +1,4 @@
-package dongguabai.demo.java8;
+package dongguabai.demo.java8.java8default;
 
 /**
  * @author dongguabai
