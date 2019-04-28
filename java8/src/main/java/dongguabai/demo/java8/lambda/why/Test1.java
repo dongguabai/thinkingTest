@@ -2,6 +2,8 @@ package dongguabai.demo.java8.lambda.why;
 
 import org.testng.annotations.Test;
 
+import java.util.Optional;
+
 /**
  * @author dongguabai
  * @Description
@@ -14,6 +16,7 @@ public class Test1 {
      */
     @Test
     public void test1(){
-        System.out.println("99999");
+        Optional<Object> empty = Optional.empty();
+        System.out.println(empty.toString());
     }
 }
