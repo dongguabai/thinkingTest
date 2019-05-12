@@ -1,5 +1,11 @@
 package dongguabai.demo.testing;
 
+import dongguabai.demo.testing.classfield.Parent;
+import org.apache.catalina.User;
+import org.springframework.lang.NonNull;
+import org.springframework.lang.Nullable;
+
+import javax.validation.constraints.Null;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -11,20 +17,21 @@ import java.util.concurrent.TimeUnit;
 public class Test1 {
 
     public static void main(String[] args) throws InterruptedException {
-        int[] arr = {6,3,1,2,4,5};
-        for (int i = 0; i < arr.length-1; i++) {
-            for (int j = i+1; j < arr.length; j++) {
-                if (arr[i] > arr[j]){
-                    int temp = arr[i];
-                    arr[i] = arr[j];
-                    arr[j] = temp;
-                }
-            }
-        }
+        Parent parent = new Parent();
+        parent.setPassword("123");
+        parent.setUsername("张三");
 
-        for (int i : arr) {
-            System.out.println(i);
-        }
+        Parent last = parent;
+        System.out.println(parent);
+        System.out.println(last);
+        System.out.println("--------");
+        last.setUsername("aaaa");
 
+        System.out.println(parent);
+        System.out.println(last);
+    }
+
+    private static void print(@NonNull String a){
+        System.out.println(a);
     }
 }
