@@ -15,6 +15,7 @@
         <module>java8</module>
         <module>netty</module>
         <module>spring</module>
+        <module>mysql-stream</module>
     </modules>
     <parent>
 		<groupId>org.springframework.boot</groupId>
