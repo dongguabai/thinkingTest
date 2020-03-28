@@ -16,6 +16,8 @@
         <module>netty</module>
         <module>spring</module>
         <module>mysql-stream</module>
+        <module>little-download</module>
+        <module>thread-local</module>
     </modules>
     <parent>
 		<groupId>org.springframework.boot</groupId>

@@ -14,7 +14,7 @@ import java.util.concurrent.ExecutionException;
 public class Demo4 {
 
     public static void main(String[] args) throws ExecutionException, InterruptedException, IOException {
-        CompletableFuture<String> cf = CompletableFuture.supplyAsync(() -> "Hello").whenCompleteAsync((v, t) -> {
+        CompletableFuture<String> cf = CompletableFuture.supplyAsync(() -> "Hello").whenComplete((v, t) -> {
             try {
                 Thread.sleep(3000);
             } catch (InterruptedException e) {
@@ -26,7 +26,7 @@ public class Demo4 {
         System.out.println("-------");
         System.in.read();
 
-
+        CompletableFuture.supplyAsync(()->"a").thenApplyAsync(a->a+1).thenApplyAsync(a->a+1);
     }
 
 
