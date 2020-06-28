@@ -14,7 +14,7 @@ public class FileDownloaderTest {
 	@Test
 	public void testDownload() {
 		
-		//String url = "http://www.hinews.cn/pic/0/13/91/26/13912621_821796.jpg";
+		//String address = "http://www.hinews.cn/pic/0/13/91/26/13912621_821796.jpg";
 		
 		String url = "http://images2015.cnblogs.com/blog/610238/201604/610238-20160421154632101-286208268.png";
 		
