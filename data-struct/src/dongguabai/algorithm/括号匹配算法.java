@@ -1,4 +1,4 @@
-package dongguabai.demo;
+package dongguabai.algorithm;
 
 import java.util.Stack;
 
@@ -8,7 +8,7 @@ import java.util.Stack;
  *                           (
  * @Date 创建于 2020-06-30 14:53
  */
-public class ParenthesisMatchingHelper {
+public class 括号匹配算法 {
 
     public static boolean mather(String str){
         if (str == null || str.length() == 1){
