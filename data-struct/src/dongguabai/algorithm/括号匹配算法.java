@@ -20,6 +20,9 @@ public class 括号匹配算法 {
             if (c == '(' || c == '[' || c == '{'){
                 stack.push(c);
             }else {
+                if (stack.isEmpty()) {
+                    return false;
+                }
                 Character pop = stack.pop();
                 if ( c == '}' && pop != '{'){
                     return false;
@@ -35,7 +38,37 @@ public class 括号匹配算法 {
         return stack.isEmpty();
     }
 
+    public static boolean mather2(String str){
+        //todo 判空和长度为1
+
+        Stack<Character> stack = new Stack<>();
+        for (int i = 0,size = str.length(); i < size; i++) {
+            char c = str.charAt(i);
+            boolean left = c == '{' || c == '[' || c == '(';
+            if (left){
+                stack.push(c);
+                continue;
+            }
+            if (c == '}' || c==']' || c == ')'){
+                if (stack.isEmpty()){
+                    return false;
+                }
+                Character pop = stack.pop();
+                if (c == '}' && pop != '{'){
+                    return false;
+                }
+                if (c == ']' && pop != '['){
+                    return false;
+                }
+                if (c == ')' && pop != '('){
+                    return false;
+                }
+            }
+        }
+        return stack.isEmpty();
+    }
+
     public static void main(String[] args) {
-        System.out.println(mather("{"));
+        System.out.println(mather("(ad}ad)"));
     }
 }
