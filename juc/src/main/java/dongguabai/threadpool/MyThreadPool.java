@@ -6,6 +6,7 @@ import javax.validation.constraints.NotNull;
 import java.util.HashSet;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
@@ -40,22 +41,38 @@ public class MyThreadPool extends AbstractThreadPool {
      */
     private volatile int maxPoolSize = 20;
 
+    private final long keepAliveTime;
+
+    private final TimeUnit unit;
+
+    /**
+     * 是否超时
+     */
+    private volatile boolean allowCoreThreadTimeOut;
+
+
     private volatile PoolState poolState = PoolState.RUNNABLE;
 
 
     public MyThreadPool(int corePoolSize, int maxPoolSize) {
-        this(new MyDefaultThreadFactory(), new ArrayBlockingQueue<>(20), corePoolSize, maxPoolSize);
+        this(new MyDefaultThreadFactory(), new ArrayBlockingQueue<>(20), corePoolSize, maxPoolSize, 10, TimeUnit.SECONDS);
     }
 
-    public MyThreadPool(MyThreadFactory threadFactory, BlockingQueue<Runnable> workQueue, int corePoolSize, int maxPoolSize) {
+    public MyThreadPool(MyThreadFactory threadFactory, BlockingQueue<Runnable> workQueue, int corePoolSize, int maxPoolSize, long keepAliveTime, TimeUnit unit) {
         this.threadFactory = threadFactory;
         this.workQueue = workQueue;
         this.corePoolSize = corePoolSize;
         this.maxPoolSize = maxPoolSize;
+        this.keepAliveTime = keepAliveTime;
+        this.unit = unit;
     }
 
     private MyThreadFactory getThreadFactory() {
         return threadFactory;
+    }
+
+    public void setAllowCoreThreadTimeOut(boolean allowCoreThreadTimeOut) {
+        this.allowCoreThreadTimeOut = allowCoreThreadTimeOut;
     }
 
     @Override
@@ -65,10 +82,10 @@ public class MyThreadPool extends AbstractThreadPool {
 
     @Override
     public void execute(Runnable command) {
-        if (poolState == PoolState.TERMINATED){
+        if (poolState == PoolState.TERMINATED) {
             throw new RuntimeException("pool terminated....");
         }
-        if (poolState == PoolState.SHUTDOWN){
+        if (poolState == PoolState.SHUTDOWN) {
             throw new RuntimeException("pool shutdown....");
         }
         final int poolSize = getPoolSize();
@@ -96,15 +113,26 @@ public class MyThreadPool extends AbstractThreadPool {
         if (firstTask != null) {
             runRunnable(firstTask);
         }
-        Thread thread = w.thread;
-        while (!workQueue.isEmpty()) {
+        while (true) {
             try {
                 //System.out.println(Thread.currentThread().getName()+"阻塞了；"+workQueue.size());
-                Runnable take = workQueue.take();
+                //Runnable take = workQueue.take();
+                boolean timed = getPoolSize() > corePoolSize && allowCoreThreadTimeOut;
+                Runnable take = timed ? workQueue.poll(keepAliveTime, TimeUnit.SECONDS) : workQueue.take();
+                if (take != null){
+                    runRunnable(take);
+                    continue;
+                }
+                synchronized (workers){
+                    if (getPoolSize() > corePoolSize && allowCoreThreadTimeOut){
+                        workers.remove(w);
+                        break;
+                    }
+                }
                 //System.out.println(Thread.currentThread().getName()+"执行了；"+workQueue.size());
-                runRunnable(take);
             } catch (InterruptedException e) {
                 System.out.println("take....InterruptedException");
+                workers.remove(w);
                 break;
             }
         }
@@ -161,11 +189,12 @@ public class MyThreadPool extends AbstractThreadPool {
     }
 
     /**
-     *  等线程池中所有任务都执行完成才关闭线程池
+     * 等线程池中所有任务都执行完成才关闭线程池
      */
-    public void shutDown(){
+    public void shutDown() {
         poolState = PoolState.SHUTDOWN;
-        while (!workQueue.isEmpty()){}
+        while (!workQueue.isEmpty()) {
+        }
         for (MyWorker worker : workers) {
             Thread thread = worker.thread;
             thread.interrupt();
@@ -177,7 +206,7 @@ public class MyThreadPool extends AbstractThreadPool {
     /**
      * 直接关闭
      */
-    public void shutDownNow(){
+    public void shutDownNow() {
         workQueue.clear();
         shutDown();
     }
@@ -225,8 +254,8 @@ public class MyThreadPool extends AbstractThreadPool {
         }
     }
 
-    private enum PoolState{
-        RUNNABLE,SHUTDOWN,TERMINATED
+    private enum PoolState {
+        RUNNABLE, SHUTDOWN, TERMINATED
     }
 }
 
