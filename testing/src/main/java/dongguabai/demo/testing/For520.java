@@ -17,7 +17,7 @@ public class For520 {
 
         public static void main(String[] args) {
 
-            //创建Scanner对象
+           /* //创建Scanner对象
             //System.in表示标准化输出，也就是键盘输出
             Scanner sc = new Scanner(System.in);
             System.out.println("在这个特殊的日子，您想表达什么：");
@@ -57,5 +57,6 @@ public class For520 {
             }
 
 
+        }*/
         }
     }
