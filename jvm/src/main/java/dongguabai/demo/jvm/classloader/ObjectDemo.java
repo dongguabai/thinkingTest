@@ -1,6 +1,10 @@
 package dongguabai.demo.jvm.classloader;
 
+import java.io.IOException;
+import java.net.URL;
 import java.time.LocalDateTime;
+import java.util.Enumeration;
+import java.util.stream.Stream;
 
 /**
  * @author dongguabai
@@ -8,12 +12,7 @@ import java.time.LocalDateTime;
  */
 public class ObjectDemo {
 
-    public static void main(String[] args) throws InterruptedException {
-           while (true){
-              // Thread.sleep(2000);
-               String[] arry = new String[1000000];
-               System.out.println(LocalDateTime.now()+"  ----");
-           }
-        }
 
 }
+
+

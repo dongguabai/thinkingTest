@@ -14,7 +14,7 @@ import java.util.stream.Stream;
  */
 public class PIDTest {
 
-    public static void main(String[] args) {
+   /* public static void main(String[] args) {
         System.out.println("获取进程 ID：");
         getPidBeforeJava9();
         getPidInJava9();
@@ -62,5 +62,5 @@ public class PIDTest {
         long pid = ProcessHandle.current().pid();
         System.out.printf("java 9 获取当前进程 ID：【%s】\n",pid);
     }
-
+*/
 }

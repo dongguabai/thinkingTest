@@ -18,7 +18,8 @@
         <module>little-download</module>
         <module>thread-local</module>
 		<module>loadbalance</module>
-	</modules>
+        <module>design-pattern</module>
+    </modules>
     <parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
