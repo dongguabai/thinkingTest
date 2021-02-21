@@ -19,6 +19,8 @@
         <module>thread-local</module>
 		<module>loadbalance</module>
         <module>design-pattern</module>
+        <module>dongguabai-hystrix</module>
+        <module>concurrent</module>
     </modules>
     <parent>
 		<groupId>org.springframework.boot</groupId>
